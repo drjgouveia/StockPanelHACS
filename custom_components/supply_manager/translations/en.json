@@ -1,121 +1,169 @@
-en:
-  config:
-    step:
-      user:
-        title: "Supply Manager"
-        description: "Set up Supply Manager to track your supplies, stock levels, and consumption."
-        data:
-          name: "Name"
-    abort:
-      single_instance_allowed: "Only one instance of Supply Manager is allowed."
-    error:
-      unknown: "An unknown error occurred."
-  services:
-    add_supply:
-      name: "Add Supply"
-      description: "Add a new supply item to track."
-      fields:
-        name:
-          name: "Name"
-          description: "Name of the supply item (e.g., 'Ibuprofen', 'Rice', 'Bottled Water')."
-        quantity:
-          name: "Quantity"
-          description: "Initial quantity in stock."
-        category:
-          name: "Category"
-          description: "Category of the supply (medicine, food, water, cleaning, hygiene, other)."
-        unit:
-          name: "Unit"
-          description: "Unit of measurement (pcs, L, kg, g, mL, packs, boxes, bottles, tablets, rolls)."
-        min_threshold:
-          name: "Minimum Threshold"
-          description: "Minimum quantity before low stock alert is triggered."
-        expiration_date:
-          name: "Expiration Date"
-          description: "Expiration date (ISO format: YYYY-MM-DD)."
-        location:
-          name: "Location"
-          description: "Where the supply is stored (e.g., 'Kitchen Cabinet', 'Bathroom')."
-        notes:
-          name: "Notes"
-          description: "Additional notes about the supply."
-        user:
-          name: "User"
-          description: "User adding the supply."
-    update_stock:
-      name: "Update Stock"
-      description: "Update the stock quantity of an existing supply."
-      fields:
-        supply_id:
-          name: "Supply ID"
-          description: "The unique ID of the supply to update."
-        quantity:
-          name: "Quantity"
-          description: "New stock quantity."
-        user:
-          name: "User"
-          description: "User performing the update."
-    log_consumption:
-      name: "Log Consumption"
-      description: "Log consumption of a supply item."
-      fields:
-        supply_id:
-          name: "Supply ID"
-          description: "The unique ID of the supply consumed."
-        quantity:
-          name: "Quantity"
-          description: "Amount consumed."
-        user:
-          name: "User"
-          description: "User who consumed the supply."
-        reason:
-          name: "Reason"
-          description: "Reason for consumption (optional)."
-    remove_supply:
-      name: "Remove Supply"
-      description: "Remove a supply item from tracking."
-      fields:
-        supply_id:
-          name: "Supply ID"
-          description: "The unique ID of the supply to remove."
-        user:
-          name: "User"
-          description: "User removing the supply."
-    get_low_stock:
-      name: "Get Low Stock"
-      description: "Get all supplies that are at or below their minimum threshold."
-    get_supply_history:
-      name: "Get Supply History"
-      description: "Get the storage operation history for supplies."
-      fields:
-        supply_id:
-          name: "Supply ID"
-          description: "Filter by specific supply ID (optional)."
-        start_date:
-          name: "Start Date"
-          description: "Filter by start date (ISO format, optional)."
-        end_date:
-          name: "End Date"
-          description: "Filter by end date (ISO format, optional)."
-        limit:
-          name: "Limit"
-          description: "Maximum number of entries to return."
-    get_consumption_log:
-      name: "Get Consumption Log"
-      description: "Get the consumption log for supplies."
-      fields:
-        supply_id:
-          name: "Supply ID"
-          description: "Filter by specific supply ID (optional)."
-        user:
-          name: "User"
-          description: "Filter by user (optional)."
-        start_date:
-          name: "Start Date"
-          description: "Filter by start date (ISO format, optional)."
-        end_date:
-          name: "End Date"
-          description: "Filter by end date (ISO format, optional)."
-        limit:
-          name: "Limit"
-          description: "Maximum number of entries to return."
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Supply Manager",
+        "description": "Set up Supply Manager to track your supplies, stock levels, and consumption.",
+        "data": {
+          "name": "Name"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Only one instance of Supply Manager is allowed."
+    },
+    "error": {
+      "unknown": "An unknown error occurred."
+    }
+  },
+  "services": {
+    "add_supply": {
+      "name": "Add Supply",
+      "description": "Add a new supply item to track.",
+      "fields": {
+        "name": {
+          "name": "Name",
+          "description": "Name of the supply item (e.g., 'Ibuprofen', 'Rice', 'Bottled Water')."
+        },
+        "quantity": {
+          "name": "Quantity",
+          "description": "Initial quantity in stock."
+        },
+        "category": {
+          "name": "Category",
+          "description": "Category of the supply (medicine, food, water, cleaning, hygiene, other)."
+        },
+        "unit": {
+          "name": "Unit",
+          "description": "Unit of measurement (pcs, L, kg, g, mL, packs, boxes, bottles, tablets, rolls)."
+        },
+        "min_threshold": {
+          "name": "Minimum Threshold",
+          "description": "Minimum quantity before low stock alert is triggered."
+        },
+        "expiration_date": {
+          "name": "Expiration Date",
+          "description": "Expiration date (ISO format: YYYY-MM-DD)."
+        },
+        "location": {
+          "name": "Location",
+          "description": "Where the supply is stored (e.g., 'Kitchen Cabinet', 'Bathroom')."
+        },
+        "notes": {
+          "name": "Notes",
+          "description": "Additional notes about the supply."
+        },
+        "user": {
+          "name": "User",
+          "description": "User adding the supply."
+        }
+      }
+    },
+    "update_stock": {
+      "name": "Update Stock",
+      "description": "Update the stock quantity of an existing supply.",
+      "fields": {
+        "supply_id": {
+          "name": "Supply ID",
+          "description": "The unique ID of the supply to update."
+        },
+        "quantity": {
+          "name": "Quantity",
+          "description": "New stock quantity."
+        },
+        "user": {
+          "name": "User",
+          "description": "User performing the update."
+        }
+      }
+    },
+    "log_consumption": {
+      "name": "Log Consumption",
+      "description": "Log consumption of a supply item.",
+      "fields": {
+        "supply_id": {
+          "name": "Supply ID",
+          "description": "The unique ID of the supply consumed."
+        },
+        "quantity": {
+          "name": "Quantity",
+          "description": "Amount consumed."
+        },
+        "user": {
+          "name": "User",
+          "description": "User who consumed the supply."
+        },
+        "reason": {
+          "name": "Reason",
+          "description": "Reason for consumption (optional)."
+        }
+      }
+    },
+    "remove_supply": {
+      "name": "Remove Supply",
+      "description": "Remove a supply item from tracking.",
+      "fields": {
+        "supply_id": {
+          "name": "Supply ID",
+          "description": "The unique ID of the supply to remove."
+        },
+        "user": {
+          "name": "User",
+          "description": "User removing the supply."
+        }
+      }
+    },
+    "get_low_stock": {
+      "name": "Get Low Stock",
+      "description": "Get all supplies that are at or below their minimum threshold."
+    },
+    "get_supply_history": {
+      "name": "Get Supply History",
+      "description": "Get the storage operation history for supplies.",
+      "fields": {
+        "supply_id": {
+          "name": "Supply ID",
+          "description": "Filter by specific supply ID (optional)."
+        },
+        "start_date": {
+          "name": "Start Date",
+          "description": "Filter by start date (ISO format, optional)."
+        },
+        "end_date": {
+          "name": "End Date",
+          "description": "Filter by end date (ISO format, optional)."
+        },
+        "limit": {
+          "name": "Limit",
+          "description": "Maximum number of entries to return."
+        }
+      }
+    },
+    "get_consumption_log": {
+      "name": "Get Consumption Log",
+      "description": "Get the consumption log for supplies.",
+      "fields": {
+        "supply_id": {
+          "name": "Supply ID",
+          "description": "Filter by specific supply ID (optional)."
+        },
+        "user": {
+          "name": "User",
+          "description": "Filter by user (optional)."
+        },
+        "start_date": {
+          "name": "Start Date",
+          "description": "Filter by start date (ISO format, optional)."
+        },
+        "end_date": {
+          "name": "End Date",
+          "description": "Filter by end date (ISO format, optional)."
+        },
+        "limit": {
+          "name": "Limit",
+          "description": "Maximum number of entries to return."
+        }
+      }
+    }
+  }
+}
