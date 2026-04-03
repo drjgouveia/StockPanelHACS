@@ -1,0 +1,20 @@
+{
+  "title": "Supply Manager",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Supply Manager",
+        "description": "Set up Supply Manager to track your supplies, stock levels, and consumption.",
+        "data": {
+          "name": "Name"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Only one instance of Supply Manager is allowed."
+    },
+    "error": {
+      "unknown": "An unknown error occurred."
+    }
+  }
+}
