@@ -100,6 +100,89 @@ data:
   end_date: "2025-12-31"
 ```
 
+## Frontend
+
+### Custom Panel
+
+The integration adds a **Supply Manager** tab to the Home Assistant sidebar with a full management interface:
+
+- **Supplies Tab**: View all supplies in a card grid, add/edit/remove items, log consumption
+- **Consumption Log Tab**: Complete history of who consumed what and when
+- **Storage History Tab**: Full audit trail of all operations (add, update, remove, consume)
+
+Click "Supply Manager" in the sidebar to access it.
+
+### Lovelace Cards
+
+Three custom cards are available for your dashboards. Add them via the Lovelace editor:
+
+#### Supply Card (Single Item)
+
+Shows detailed info for one supply with progress bar and low stock indicator:
+
+```yaml
+type: custom:supply-card
+entity: sensor.ibuprofen_stock
+# or use supply_id instead:
+# supply_id: abc12345
+name: Ibuprofen
+```
+
+#### Supply Overview Card
+
+Shows category breakdown and low stock alerts:
+
+```yaml
+type: custom:supply-overview-card
+title: Supply Overview
+show_categories: true
+show_low_stock: true
+```
+
+#### Supply Log Card
+
+Shows recent stock status for all supplies:
+
+```yaml
+type: custom:supply-log-card
+title: Recent Stock Status
+max_entries: 10
+# Optional filters:
+# filter_user: "John"
+# filter_supply: "Ibuprofen"
+```
+
+### Example Dashboard
+
+```yaml
+title: Supply Dashboard
+views:
+  - title: Overview
+    cards:
+      - type: custom:supply-overview-card
+        title: Supply Overview
+        show_categories: true
+        show_low_stock: true
+
+      - type: custom:supply-log-card
+        title: Recent Stock Status
+        max_entries: 15
+
+  - title: Medicine
+    cards:
+      - type: custom:supply-card
+        entity: sensor.ibuprofen_stock
+      - type: custom:supply-card
+        entity: sensor.aspirin_stock
+
+  - title: Food & Water
+    cards:
+      - type: custom:supply-card
+        entity: sensor.rice_stock
+      - type: custom:supply-card
+        entity: sensor.bottled_water_stock
+```
+
 ## Sensors
 
 The integration creates the following sensors:

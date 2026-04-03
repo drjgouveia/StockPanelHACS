@@ -1,0 +1,4 @@
+type: custom:supply-overview-card
+title: Supply Overview
+show_categories: true
+show_low_stock: true

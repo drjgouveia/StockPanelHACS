@@ -4,10 +4,12 @@ import logging
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.components.frontend import async_register_panel
 from homeassistant.helpers import device_registry as dr
 
 from .const import DOMAIN
 from .coordinator import SupplyCoordinator
+from .frontend import async_register_frontend, async_unregister_frontend
 from .services import async_setup_services, async_unload_services
 from .storage import SupplyStorage
 
@@ -48,6 +50,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     await async_setup_services(hass)
+    await async_register_frontend(hass)
 
     return True
 
@@ -59,5 +62,6 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if unload_ok:
         hass.data[DOMAIN].pop(entry.entry_id)
         await async_unload_services(hass)
+        await async_unregister_frontend(hass)
 
     return unload_ok
